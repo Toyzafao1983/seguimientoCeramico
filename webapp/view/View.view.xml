@@ -1,0 +1,138 @@
+<mvc:View controllerName="com.aris.seguimiento.ceramico.pe.controller.View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants">
+    <Shell>
+        <f:DynamicPage headerExpanded="true">
+                <f:title>
+                    <f:DynamicPageTitle>
+                        <f:heading>
+                            <Title level="H1" text="
+                            {= ${oModelUser>/bAdmin} ? ${i18n>title} +' - '+ ${oModelUser>/sNameComp} : ${i18n>title}  }
+                            " wrapping="true" />
+                        </f:heading>
+                        <f:actions>
+                            <Button text="{i18n>textHome}" press="_onbtnHome" type="Back" icon="sap-icon://home" tooltip="{i18n>tooltipbtnHome}"/>
+                            <MenuButton text="{i18n>titleButtonLanguaje}">
+                                    <menu>
+                                        <Menu itemSelected="onMenuAction">
+                                            <MenuItem text="{i18n>titleButtonLanguajeEN}" press="onLanguageEng"/>
+                                            <MenuItem text="{i18n>titleButtonLanguajeES}" press="onLanguageEsp"/>
+                                        </Menu>
+                                    </menu>
+                                </MenuButton>
+
+                        </f:actions>
+                    </f:DynamicPageTitle>
+                </f:title>
+                <f:header>
+                    <f:DynamicPageHeader>
+                        <f:content>
+                        <VBox>
+                            <fb:FilterBar id="idFilterBar" filterContainerWidth="10rem" reset="onReset" search="_onSearchFB" showFilterConfiguration="false"
+                                showRestoreButton="false" showClearOnFB="false" showGoOnFB="false" clear="_clearComponent" useToolbar="false" >
+                                <fb:filterItems>
+                                
+                                    <fb:FilterItem name="A" label="{i18n>txtStartDate}">
+                                        <fb:control >
+                                            <DatePicker id="dStartDate" value="{oModelProyect>/Main/filter/dStartDate}" valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy"/>
+                                        </fb:control>
+                                    </fb:FilterItem>
+                                    
+                                    <fb:FilterItem name="B" label="{i18n>txtEndDate}" visible="{= !${oModelUser>/bAdmin}}">
+                                        <fb:control>
+                                           <DatePicker id="dEndDate" value="{oModelProyect>/Main/filter/dEndDate}" valueFormat="dd/MM/yyyy" displayFormat="dd/MM/yyyy" />
+                                        </fb:control>
+                                    </fb:FilterItem>
+
+                                    <fb:FilterItem name="C" label="{i18n>txtOrder}" visible="{= !${oModelUser>/bAdmin}}">
+                                        <fb:control>
+                                            <Input value="{oModelProyect>/Main/filter/cbCondPagoText} "/>
+                                        </fb:control>
+                                    </fb:FilterItem>
+                                    
+                                    <fb:FilterItem name="D" label="{i18n>txtSeller}" visible="{= !${oModelUser>/bAdmin}}">
+                                        <fb:control>
+                                            <ComboBox
+                                            id="cbSeller"
+                                            width="250px"
+                                            tooltip="{i18n>tooltipinp}"
+                                            value="{oModelProyect>/Main/filter/cbSeller}"
+                                            items="{
+                                                path: 'oModelData>/oVendedor',
+                                                sorter: { path: 'sText' }
+                                            }">
+                                            <core:Item key="{oModelData>sKey}" text="{oModelData>sText}" />
+                                            </ComboBox>
+                                        </fb:control>
+                                    </fb:FilterItem>
+
+                                    <fb:FilterItem name="E" label="{i18n>txtCustomer}" visible="{= !${oModelUser>/bAdmin}}">
+                                        <fb:control>
+                                            <ComboBox
+                                            id="cbCustomer"
+                                            width="250px"
+                                            tooltip="{i18n>tooltipinp}"
+                                            value="{oModelProyect>/Main/filter/cbCustomer}"
+                                            items="{
+                                                path: 'oModelData>/oCliente',
+                                                sorter: { path: 'sText' }
+                                            }">
+                                            <core:Item key="{oModelData>sKey}" text="{oModelData>sText}" />
+                                            </ComboBox>
+                                        </fb:control>
+                                    </fb:FilterItem>
+
+                                    <fb:FilterItem name="F" label="{i18n>txtState}" visible="{= !${oModelUser>/bAdmin}}">
+                                        <fb:control>
+                                            <ComboBox
+                                            id="cbState"
+                                            width="250px"
+                                            tooltip="{i18n>tooltipinp}"
+                                            value="{oModelProyect>/Main/filter/cbState}"
+                                            items="{
+                                                path: 'oModelData>/oEstado',
+                                                sorter: { path: 'sText' }
+                                            }">
+                                            <core:Item key="{oModelData>sKey}" text="{oModelData>sText}" />
+                                            </ComboBox>
+                                        </fb:control>
+                                    </fb:FilterItem>
+
+                                    <fb:FilterItem name="G" label="{i18n>txtOrderClass}" visible="{= !${oModelUser>/bAdmin}}">
+                                        <fb:control>
+                                            <ComboBox
+                                            id="cbOrderClass"
+                                            width="250px"
+                                            tooltip="{i18n>tooltipinp}"
+                                            items="{path: 'oModelData>/oClasePedido'}"
+                                            value="{oModelProyect>/Main/filter/cbOrderClass}" >
+                                            <core:Item key="{oModelData>sKey}" text="{oModelData>sText}" />
+                                            </ComboBox>
+                                        </fb:control>
+                                    </fb:FilterItem>
+
+                                </fb:filterItems>
+                            </fb:FilterBar>
+                            </VBox>
+                            <HBox>
+                                <Button text="{i18n>textFind}" press="_onPressExecute" icon="sap-icon://detail-view" tooltip="{i18n>tooltipbtnFind}"/>
+                                <Button text="{i18n>textClear}" press="_onClearFilter" icon="sap-icon://clear-filter" tooltip="{i18n>tooltipbtnClear}"/>
+                            </HBox>
+                        </f:content>
+                    </f:DynamicPageHeader>
+                </f:header>
+                <f:content>
+                    <VBox >
+                        <VBox >
+                         <VBox id="vbTableMain">
+                        </VBox>
+                        </VBox>
+                    </VBox>
+                </f:content>
+            </f:DynamicPage>
+    </Shell>
+</mvc:View>

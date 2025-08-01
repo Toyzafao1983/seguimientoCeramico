@@ -1,0 +1,163 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+      "id": "com.aris.seguimiento.ceramico.pe",
+      "type": "application",
+      "i18n": {
+          "bundleUrl": "i18n/i18n.properties",
+          "supportedLocales": [
+              "",
+              "esp",
+              "ing"
+          ]
+      },
+      "applicationVersion": {
+          "version": "0.0.1"
+      },
+      "title": "{{appTitle}}",
+      "description": "{{appDescription}}",
+      "resources": "resources.json",
+      "sourceTemplate": {
+          "id": "@sap/generator-fiori:basic",
+          "version": "1.18.3",
+          "toolsId": "b51d1d47-8047-45b6-9720-0078c656cdc7"
+      },
+      "crossNavigation": {
+          "inbounds": {
+              "intent1": {
+                  "signature": {
+                      "parameters": {},
+                      "additionalParameters": "allowed"
+                  },
+                  "semanticObject": "Dynamic",
+                  "action": "display",
+                  "title": "{{appTitle}}",
+                  "icon": "sap-icon://Fiori4/F0650"
+              }
+          }
+      }
+  },
+  "sap.ui": {
+      "technology": "UI5",
+      "icons": {
+          "icon": "",
+          "favIcon": "",
+          "phone": "",
+          "phone@2": "",
+          "tablet": "",
+          "tablet@2": ""
+      },
+      "deviceTypes": {
+          "desktop": true,
+          "tablet": true,
+          "phone": true
+      }
+  },
+  "sap.ui5": {
+      "flexEnabled": false,
+      "dependencies": {
+          "minUI5Version": "1.138.0",
+          "libs": {
+              "sap.m": {},
+              "sap.ui.core": {},
+              "sap.f": {},
+              "sap.suite.ui.generic.template": {},
+              "sap.ui.comp": {},
+              "sap.ui.generic.app": {},
+              "sap.ui.table": {},
+              "sap.ushell": {}
+          }
+      },
+      "contentDensities": {
+          "compact": true,
+          "cozy": true
+      },
+      "models": {
+          "i18n": {
+              "type": "sap.ui.model.resource.ResourceModel",
+              "settings": {
+                  "bundleName": "com.aris.seguimiento.ceramico.pe.i18n.i18n",
+                  "supportedLocales": [
+                      "",
+                      "esp",
+                      "ing"
+                  ]
+              }
+          },
+          "oModelUser": {
+              "type": "sap.ui.model.json.JSONModel",
+              "preload": true,
+              "settings": {}
+          },
+          "oModelProyect": {
+              "type": "sap.ui.model.json.JSONModel",
+              "preload": true,
+              "settings": {}
+          },
+          "oModelData": {
+              "type": "sap.ui.model.json.JSONModel",
+              "preload": true,
+              "settings": {}
+          }
+      },
+      "resources": {
+          "css": [
+              {
+                  "uri": "css/style.css"
+              }
+          ]
+      },
+      "routing": {
+          "config": {
+              "routerClass": "sap.m.routing.Router",
+              "controlAggregation": "pages",
+              "controlId": "app",
+              "transition": "slide",
+              "type": "View",
+              "viewType": "XML",
+              "path": "com.aris.seguimiento.ceramico.pe.view",
+              "async": true,
+              "viewPath": "com.aris.seguimiento.ceramico.pe.view"
+          },
+          "routes": [
+              {
+                  "name": "View",
+                  "pattern": ":?query:",
+                  "target": [
+                      "View"
+                  ]
+              },
+              {
+                  "name": "Detail",
+                  "pattern": "Detail/:app:",
+                  "target": [
+                      "Detail"
+                  ]
+              }
+          ],
+          "targets": {
+              "View": {
+                  "id": "View",
+                  "name": "View"
+              },
+              "Detail": {
+                  "viewType": "XML",
+                  "transition": "slide",
+                  "clearControlAggregation": false,
+                  "viewId": "Detail",
+                  "viewName": "Detail"
+              }
+          }
+      },
+      "rootView": {
+          "viewName": "com.aris.seguimiento.ceramico.pe.view.App",
+          "type": "XML",
+          "id": "App",
+          "async": true
+      }
+  },
+  "sap.cloud": {
+      "public": true,
+      "service": "comarisseguimientoceramicope"
+  }
+}
