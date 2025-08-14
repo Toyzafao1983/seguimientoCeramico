@@ -8,27 +8,23 @@
     xmlns:svm="sap.ui.comp.smartvariants">
      <Shell>
      <VBox alignItems="Center">
-                <!--<co:ProcessFlow
-			id="processflow2"
-			scrollable="false"
-			>
-                        <co:lanes>
-				<co:ProcessFlowLaneHeader
-					laneId="1"
-					text="Pendiente de Aprobación"
-					position="0"
-                                        iconSrc="sap-icon://lateness"
-                                        />
-                                 <co:ProcessFlowLaneHeader
-					laneId="2"
-					text="Rechazado"
-					position="1"
-                                        iconSrc="sap-icon://thumb-down"/>      
-			</co:lanes>
-                                
-			
-		</co:ProcessFlow>-->
-
+                <HBox alignItems="Center" justifyContent="Center" class="sapUiSmallMargin">
+                        <!-- Paso 1 -->
+                        <VBox alignItems="Center">
+                                <core:Icon id="iStateES1" src="sap-icon://accounting-document-verification" size="3rem" color="gray"/>
+                                <Label text="Pendiente de Aprobación" design="Bold"/>
+                        </VBox>
+                        <!-- Flecha -->
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://process" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <!-- Paso 2 -->
+                        <VBox alignItems="Center">
+                                <core:Icon id="iStateES2" src="sap-icon://decline" size="3rem" color="gray"/>
+                                <Label text="Rechazado" design="Bold"/>
+                        </VBox>
+                        
+                </HBox>
                  <ScrollContainer width="100%" height="50%">
                         <Table id="vdTable12" items="{oModelProyect>/oDetalle}"  mode="None" growingThreshold="20" headerText="Detalle de Pedido" popinLayout="GridSmall"  class="sapUiSmallMargin" >
                                 <columns>

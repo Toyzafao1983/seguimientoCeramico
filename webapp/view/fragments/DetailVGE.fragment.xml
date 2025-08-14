@@ -8,33 +8,50 @@
     xmlns:svm="sap.ui.comp.smartvariants">
      <Shell>
      <VBox alignItems="Center">
-              <!-- <co:ProcessFlow
-			id="processflow1"
-			scrollable="false"
-                        wheelZoomable="true">
-                        <co:lanes>
-				<co:ProcessFlowLaneHeader
-					laneId="1"
-                                        state="Positive">
-                                        <suite:nodes>
-                                        <suite:ProcessFlowNode
-                                                nodeId="node1"
-                                                title="Creación"
-                                                state="Positive"/>
-                                        <suite:ProcessFlowNode
-                                                nodeId="node2"
-                                                title="Aprobación"
-                                                state="Neutral"/>
-                                        <suite:ProcessFlowNode
-                                                nodeId="node3"
-                                                title="Ejecución"
-                                                state="Negative"/>
-                                        </suite:nodes>
-                                </co:ProcessFlowLaneHeader>
-			</co:lanes>
-                                
-			
-		</co:ProcessFlow>--> 
+             <HBox alignItems="Center" justifyContent="Center" class="sapUiSmallMargin">
+                        <!-- Paso 1 -->
+                        <VBox alignItems="Center">
+                                <core:Icon id="iState1" src="sap-icon://accounting-document-verification" size="3rem" color="gray"/>
+                                <Label text="Pendiente de Aprobación" design="Bold"/>
+                        </VBox>
+                        <!-- Flecha -->
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://process" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <!-- Paso 2 -->
+                        <VBox alignItems="Center">
+                                <core:Icon id="iState2" src="sap-icon://approvals" size="3rem" color="gray"/>
+                                <Label text="Aprobado" design="Bold"/>
+                        </VBox>
+                        <!-- Flecha -->
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://process" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <!-- Paso 3 -->
+                        <VBox alignItems="Center">
+                                <core:Icon id="iState3" src="sap-icon://shipping-status" size="3rem" color="gray"/>
+                                <Label text="En Preparación" design="Bold"/>
+                        </VBox>
+                        <!-- Flecha -->
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://process" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <!-- Paso 4 -->
+                        <VBox alignItems="Center">
+                                <core:Icon id="iState4" src="sap-icon://payment-approval" size="3rem" color="gray"/>
+                                <Label text="Facturación" design="Bold"/>
+                        </VBox>
+                        <!-- Flecha -->
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://process" size="2rem" color="gray"/>
+                        <core:Icon src="sap-icon://less" size="2rem" color="gray"/>
+
+                        <!-- Paso 5 -->
+                                <VBox alignItems="Center">
+                                        <core:Icon id="iState5" src="sap-icon://complete" size="3rem" color="gray"/>
+                                        <Label text="Finalizado" design="Bold"/>
+                                </VBox>
+                </HBox>
 
                  <ScrollContainer width="100%" height="50%">
                         <Table id="vdTable1" items="{oModelProyect>/oDetalle}"  mode="None" growingThreshold="20" headerText="Detalle de Pedido" popinLayout="GridSmall"  class="sapUiSmallMargin" >
